@@ -7,4 +7,5 @@ __pycache__/
 dataset/test/
 dataset/trainval/
 test.py
-debug*
+debug*features/
+features/
