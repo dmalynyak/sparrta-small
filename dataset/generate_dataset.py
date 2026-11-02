@@ -23,11 +23,11 @@ COLORS = {
 }
 TEST_COLORS = ["purple", "orange"]
 
-BASE_SIZE = 0.18 * CANVAS
+BASE_SIZE = 0.15 * CANVAS
 SCALE = {"left": 1.0, "right": 1.0, "front": 1.5, "back": 0.65}
 SIZE_JITTER = 0.10
-REF_JITTER = 0.10 * CANVAS
-BORDER_GAP = 0.04 * CANVAS
+REF_JITTER = 0.15 * CANVAS
+BORDER_GAP = 0.05 * CANVAS
 OBJECTS_GAP = 0.05 * CANVAS
 
 
@@ -65,6 +65,7 @@ def place(relation, rng):
 
     if relation in ("left", "right"):
         max_dx = CANVAS - BORDER_GAP - tgt_size / 2 - rx if relation == "right" else rx - BORDER_GAP - tgt_size / 2
+    #    print(f"max_dx: {max_dx}, half_sum: {half_sum}, object_gap: {OBJECTS_GAP}")
         dx = rng.uniform(half_sum + OBJECTS_GAP, max_dx)  # anywhere between min gap and border
         dx = -dx if relation == "left" else dx
         dy = rng.uniform(-0.04, 0.04) * CANVAS          # up/down jitter
