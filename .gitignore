@@ -4,8 +4,9 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 *.pyc
-dataset/test/
-dataset/trainval/
+dataset/test*/
+dataset/trainval*/
 test.py
 debug*features/
 features/
+results/*_old*
