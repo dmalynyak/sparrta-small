@@ -9,6 +9,7 @@ DATA_DIR = Path("dataset")
 OUT_DIR = Path("features")
 SPLITS = ["trainval", "test"]
 RELATIONS = ["left", "right", "front", "back"]
+# labels: left-0 right-1 front-2 back-3
 BATCH_SIZE = 50
 
 VIT_MODELS = {
