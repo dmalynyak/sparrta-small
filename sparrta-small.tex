@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[final]{neurips_2026}
+\usepackage{graphicx}
 
 \title{Sparrta-Small}
 \author{Dmytro Malynyak \\ Jagiellonian University \\ \texttt{dmytro.malynyak@student.uj.edu.pl}}
@@ -16,5 +17,21 @@
 \textbf{H3:} CLS token should produce worse results than average pooled token. Because CLS token is deliberately made for classification (or image descibing in case of DINO), not spatial (geometry) understanding. The classification goal of pretraining could possible also led to worse spatial understanding at later layers. So I expect peak somewhere in the middle layers. 
 
 \textbf{H4:} DINO-ViT should give better results than Supervised-ViT. Supervised ViT is pretrained strictly for classification, whether DINO is learning relations through its training architectures. Its shown that last layers of DINO attention maps are good at segmentation, which is, presumably, gives better spatial understanding.
+
+\section{Setup}
+
+\textbf{Dataset: } 250 images for each relation. 4 training/validation colors for figures, 2 different colors for test split. Background color is random bright. Size/position jittering as asked in statement. 
+
+\textbf{Feature extraction: } Official preprocessing(with its own mean and std, but without random crop) is applied for every model. For ViT-supervised and ViT-DINO we extract features after each of the 12 blocks (residual streams). Since those blocks are the same, transformations are also. Layer 12 is extracted before head and its LayerNorm, so it is the same as other blocks. CLS is token 0, for pooling we use average pooling across 196 patch tokens. ResNet features are taken after each 'stage', and then followed by global average pooling. The same procedure for every stage. 
+
+\textbf{Normalization before probing: } Between feature extraction and probing, StandardScaler is calculated among each feature on training dataset. It is applied for val and test sets, so its the same across one seed and does not intersect with val or test data. 
+
+\textbf{Probing: } Train and validation sets are distinguished based on 3 seeds(70/10/20), head is trained using sklearn LogisticRegression on training dataset with 11 different $C$ values. The $C$ with highes validation accuracy then chosen and probe is evaluated on test set. For binary probes we use the same logic but with 500 chosen images. 
+
+
+\section{Results}
+
+
+
 
 \end{document}
