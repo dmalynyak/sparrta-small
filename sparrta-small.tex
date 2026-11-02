@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage[final]{neurips_2026}
+
+\title{Sparrta-Small}
+\author{Dmytro Malynyak \\ Jagiellonian University \\ \texttt{dmytro.malynyak@student.uj.edu.pl}}
+
+\begin{document}
+\maketitle
+
+\section{Hypotheses how results should look}
+
+\textbf{H1:} Front/back relation should give better (maybe ideal) results. Different sizes and occlusion relations intuitivelly should be easier for model to recognise then left/right ones.
+
+\textbf{H2:} Left/right relation should be on the level of chance at first layer of ResNet and (little bit better) on ViT. First layer(-s) should produce localised features (about the objects themself) rather then relation (between objects) features. In ResNet its an architecture (far patches phisically are not connected yet), in ViT not, but intuitivelly should be true. 
+
+\textbf{H3:} CLS token should produce worse results than average pooled token. Because CLS token is deliberately made for classification (or image descibing in case of DINO), not spatial (geometry) understanding. The classification goal of pretraining could possible also led to worse spatial understanding at later layers. So I expect peak somewhere in the middle layers. 
+
+\textbf{H4:} DINO-ViT should give better results than Supervised-ViT. Supervised ViT is pretrained strictly for classification, whether DINO is learning relations through its training architectures. Its shown that last layers of DINO attention maps are good at segmentation, which is, presumably, gives better spatial understanding.
+
+\end{document}
