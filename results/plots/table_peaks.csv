@@ -1,0 +1,16 @@
+model,task,peak_layer,test_acc_mean,test_acc_std
+"Supervised ViT, CLS",4-way,3,0.9717,0.0076
+"Supervised ViT, CLS",Left/right,5,0.9433,0.0115
+"Supervised ViT, CLS",Front/back,4,1.0,0.0
+"Supervised ViT, mean",4-way,5,0.9833,0.0076
+"Supervised ViT, mean",Left/right,5,0.98,0.01
+"Supervised ViT, mean",Front/back,3,1.0,0.0
+"DINO ViT, CLS",4-way,6,0.9633,0.0161
+"DINO ViT, CLS",Left/right,3,0.92,0.0346
+"DINO ViT, CLS",Front/back,3,1.0,0.0
+"DINO ViT, mean",4-way,5,0.9767,0.0076
+"DINO ViT, mean",Left/right,5,0.9533,0.0153
+"DINO ViT, mean",Front/back,6,1.0,0.0
+"ResNet-50, GAP",4-way,3,0.9933,0.0029
+"ResNet-50, GAP",Left/right,3,0.99,0.01
+"ResNet-50, GAP",Front/back,1,1.0,0.0
